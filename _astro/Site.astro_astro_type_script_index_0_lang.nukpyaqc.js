@@ -1,0 +1,1 @@
+import{c as e,n as t,o as n,s as r,t as i}from"./scroll.BQeCwS4h.js";import{t as a}from"./hints.Dv4_megt.js";i(),n(),a(),r.sort(),document.fonts?.addEventListener(`loadingdone`,()=>requestAnimationFrame(()=>r.refresh())),t()||e.utils.toArray(`[data-reveal]`).forEach(t=>{e.from(t,{y:36,opacity:0,duration:1.2,ease:`power3.out`,scrollTrigger:{trigger:t,start:`top 88%`,once:!0}})});
