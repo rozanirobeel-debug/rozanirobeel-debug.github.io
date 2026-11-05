@@ -1,0 +1,167 @@
+{
+  "title": "One room, three possibilities",
+  "lede": "The living space of Possibility House, seen from one fixed point. Choose a template and the same room rebuilds itself around it: finishes, fabrics, furniture and light.",
+  "w": 1600,
+  "h": 900,
+  "fps": 24,
+  "base": {
+    "name": "The room as built",
+    "line": "Screed floor, limewash walls, a quiet daylight shell.",
+    "alt": "The double-height living room with a pale screed floor, limewash walls, tall curtained glazing and a low sofa group.",
+    "swatch": [
+      "#b9b5ad",
+      "#dcd8cf",
+      "#6b6a66"
+    ],
+    "materials": [
+      [
+        "Floor",
+        "Polished concrete screed"
+      ],
+      [
+        "Walls",
+        "Limewash plaster"
+      ],
+      [
+        "Light",
+        "Midday, north-west sky"
+      ]
+    ]
+  },
+  "templates": [
+    {
+      "id": "tpl_a",
+      "name": "Travertine Morning",
+      "floor": "travertine slabs",
+      "wall": "pale oak panels",
+      "line": "Honed stone underfoot, pale oak behind, low morning sun through linen.",
+      "alt": "The same room in morning light: honed travertine floor, pale oak wall panels, ivory linen curtains, charcoal rug, olive plant.",
+      "swatch": [
+        "#d9d0c0",
+        "#c8b79c",
+        "#3f3e3a"
+      ],
+      "materials": [
+        [
+          "Floor",
+          "Honed travertine, 600 × 1200, running bond"
+        ],
+        [
+          "Walls",
+          "Pale oak veneer panels, three tiers"
+        ],
+        [
+          "Fabric",
+          "Ivory boucle, charcoal wool rug"
+        ]
+      ]
+    },
+    {
+      "id": "tpl_b",
+      "name": "Oak Evening",
+      "floor": "smoked oak boards",
+      "wall": "smoked oak panels",
+      "line": "Fumed oak on floor and wall, dark wool, lamps on at dusk.",
+      "alt": "The same room at dusk: smoked oak floor and wall panels, charcoal wool sofa, warm lamps and a mid-century lounge chair.",
+      "swatch": [
+        "#4a3b2e",
+        "#2f2925",
+        "#a5784b"
+      ],
+      "materials": [
+        [
+          "Floor",
+          "Smoked oak boards, 240 mm"
+        ],
+        [
+          "Walls",
+          "Smoked oak panels, two tiers"
+        ],
+        [
+          "Fabric",
+          "Charcoal wool, smoke linen"
+        ]
+      ]
+    },
+    {
+      "id": "tpl_c",
+      "name": "Verde Studio",
+      "floor": "pale oak boards",
+      "wall": "green tadelakt",
+      "line": "Deep green lime plaster, pale oak, a terracotta sofa in clear midday light.",
+      "alt": "The same room at midday: green tadelakt wall, pale oak floor boards, terracotta sofa, natural linen curtains and a large plant.",
+      "swatch": [
+        "#4f5c4e",
+        "#d9cdb8",
+        "#9c4e2b"
+      ],
+      "materials": [
+        [
+          "Floor",
+          "Pale oak boards, 180 mm"
+        ],
+        [
+          "Walls",
+          "Green tadelakt lime plaster"
+        ],
+        [
+          "Fabric",
+          "Terracotta boucle, natural linen"
+        ]
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "from": 0,
+      "to": 0.22,
+      "label": "Floor · {floor}"
+    },
+    {
+      "from": 0.22,
+      "to": 0.4,
+      "label": "Walls · {wall}"
+    },
+    {
+      "from": 0.4,
+      "to": 0.62,
+      "label": "Fabrics · curtains and upholstery"
+    },
+    {
+      "from": 0.62,
+      "to": 0.82,
+      "label": "Furniture · new pieces"
+    },
+    {
+      "from": 0.82,
+      "to": 1.01,
+      "label": "Light"
+    }
+  ],
+  "stills": {
+    "base": "stills/base.webp",
+    "tpl_a": "stills/tpl_a.webp",
+    "tpl_b": "stills/tpl_b.webp",
+    "tpl_c": "stills/tpl_c.webp"
+  },
+  "transitions": {
+    "tpl_a": {
+      "frames": 120,
+      "path": "tpl_a/f%03d.webp",
+      "q": 68,
+      "bytes": 3768084
+    },
+    "tpl_b": {
+      "frames": 120,
+      "path": "tpl_b/f%03d.webp",
+      "q": 72,
+      "bytes": 3692632
+    },
+    "tpl_c": {
+      "frames": 120,
+      "path": "tpl_c/f%03d.webp",
+      "q": 72,
+      "bytes": 3843292
+    }
+  }
+}
