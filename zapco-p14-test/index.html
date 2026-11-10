@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ZAPCO — P1.5 Stage A.1 prototype (private)</title>
+<title>ZAPCO · Fifteen stations across Texas (private demo)</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#070f26">
 <link rel="icon" href="data:,">
@@ -26,7 +26,7 @@
   document.addEventListener('click', function (e) { if (window.__app) return; var b = e.target.closest && e.target.closest('[data-go]'); if (!b) return;
     window.__intent = b.dataset.go; d.classList.add('booting'); d.dataset.intent = b.dataset.go; }, true);
 })();</script>
-  <script type="module" crossorigin src="/zapco-p14-test/assets/p15lab-CITn3dzI.js"></script>
+  <script type="module" crossorigin src="/zapco-p14-test/assets/p15lab-CRx7e4Jn.js"></script>
   <link rel="modulepreload" crossorigin href="/zapco-p14-test/assets/500-CkHkDwZr.js">
   <link rel="stylesheet" crossorigin href="/zapco-p14-test/assets/500-9LSn-KqO.css">
   <link rel="stylesheet" crossorigin href="/zapco-p14-test/assets/p15lab-B_guNkCZ.css">
@@ -39,7 +39,7 @@
     <img src="/zapco-p14-test/lab/p14/f/d/001.webp" alt="" decoding="async" fetchpriority="high">
   </picture>
   <img id="hi" class="hi" alt="" aria-hidden="true">
-  <svg id="map" class="map" role="img" aria-label="Map of ZAPCO's 15 listed stations across Greater Houston, Orange, Austin and the Hill Country, and San Antonio"></svg>
+  <svg id="map" class="map" role="img" aria-label="Map of ZAPCO's 15 listed stations across Greater Houston, Orange, Austin and the Hill Country, and San Antonio. The station list next to the map offers the same stations for keyboard and screen readers."></svg>
 </div>
 
 <!-- navigation: one bar for the first screen and the story; the map carries its own header -->
@@ -106,7 +106,7 @@
     </div>
     <div class="sh-note" id="shNote" hidden></div>
     <div class="v-list" id="vList">
-      <div class="sh-sum" id="shSum"></div>
+      <div class="sh-sum" id="shSum" aria-live="polite"></div>
       <div class="regions" role="tablist" aria-label="Regions" id="regions"></div>
       <ol class="results" id="results" aria-label="Stations"></ol>
       <p class="sh-foot"><i class="mk approx" aria-hidden="true"></i>Dashed = approximate position · distances are straight-line · roads: US Census TIGER</p>
