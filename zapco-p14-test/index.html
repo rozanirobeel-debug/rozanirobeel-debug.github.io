@@ -26,10 +26,10 @@
   document.addEventListener('click', function (e) { if (window.__app) return; var b = e.target.closest && e.target.closest('[data-go]'); if (!b) return;
     window.__intent = b.dataset.go; d.classList.add('booting'); d.dataset.intent = b.dataset.go; }, true);
 })();</script>
-  <script type="module" crossorigin src="/zapco-p14-test/assets/p24c-Co4B9n7n.js"></script>
+  <script type="module" crossorigin src="/zapco-p14-test/assets/p24c-B_OlTKxr.js"></script>
   <link rel="modulepreload" crossorigin href="/zapco-p14-test/assets/500-CkHkDwZr.js">
   <link rel="stylesheet" crossorigin href="/zapco-p14-test/assets/500-9LSn-KqO.css">
-  <link rel="stylesheet" crossorigin href="/zapco-p14-test/assets/p24c-_tkGg8Np.css">
+  <link rel="stylesheet" crossorigin href="/zapco-p14-test/assets/p24c-CLB50Rdo.css">
 </head>
 <body>
 <div class="track" id="track"></div>
@@ -130,11 +130,26 @@
     <button class="a2-back" id="a2Back"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg><span>Back to the map</span></button>
     <button class="a2-find" data-a2find><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg><span>Find a station</span></button>
   </div>
-  <h2 id="a2H" tabindex="-1" class="p24-sr">The ZAPCO universe (P2.4c journey proof)</h2>
+  <h2 id="a2H" tabindex="-1" class="p24-sr">The ZAPCO journey: our story, on the road, trust and contact</h2>
   <button class="a2-card" id="a2Card" hidden><span>Your map, as you left it</span></button>
   <button class="a2-next p24s" id="a2Next" aria-label="Continue"><span class="p24s-m" aria-hidden="true"><i></i></span><span class="p24s-t d-only">Scroll</span><span class="p24s-t m-only">Swipe up</span><span class="p24s-bar" aria-hidden="true"><b></b></span></button>
-  <div class="p24c" id="a2Contact" aria-hidden="true"><div class="p24c-panel"><i></i><i></i><i></i><b></b></div></div>
-  <p class="p24-tag">P2.4c proof · live real-time 3D, scroll-driven · private demo</p>
+  <div class="p24c" id="a2Contact" aria-hidden="true"><div class="p24c-panel" role="region" aria-labelledby="p24cH">
+    <p class="ch-eb">04 · Contact</p>
+    <h3 class="p24c-h" id="p24cH">Talk to ZAPCO.</h3>
+    <p class="p24c-b">Fleet accounts, franchise enquiries or a question about a station.</p>
+    <form class="p24c-f" onsubmit="return false" aria-describedby="p24cNote">
+      <fieldset class="p24c-topics"><legend class="p24-sr">Topic</legend>
+        <label><input type="radio" name="p24t" value="fleet" checked><span>Fleet account</span></label>
+        <label><input type="radio" name="p24t" value="franchise"><span>Franchise</span></label>
+        <label><input type="radio" name="p24t" value="general"><span>General</span></label>
+      </fieldset>
+      <label class="p24c-in"><span>Name</span><input type="text" autocomplete="off" disabled placeholder="Your name"></label>
+      <label class="p24c-in"><span>Email</span><input type="email" autocomplete="off" disabled placeholder="you@company.com"></label>
+      <div class="p24c-act"><button type="button" class="p24c-send" disabled>Send enquiry</button><button type="button" class="p24c-find" data-a2find>Find a station</button></div>
+      <p class="p24c-note" id="p24cNote">Demo form: nothing is sent. Topics from zapcotx.com.</p>
+    </form>
+  </div></div>
+  <p class="p24-tag">P2.5 · Act II · live real-time 3D · private demo</p>
 </section>
 <div class="hint" id="hint"></div>
 <div class="steps" id="steps" aria-hidden="true"></div>
