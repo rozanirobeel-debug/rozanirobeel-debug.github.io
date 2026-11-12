@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ZAPCO · Fifteen stations across Texas (private demo)</title>
+<title>P2.4 · ZAPCO · Fifteen stations across Texas (private demo)</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#070f26">
 <link rel="icon" href="data:,">
@@ -26,10 +26,10 @@
   document.addEventListener('click', function (e) { if (window.__app) return; var b = e.target.closest && e.target.closest('[data-go]'); if (!b) return;
     window.__intent = b.dataset.go; d.classList.add('booting'); d.dataset.intent = b.dataset.go; }, true);
 })();</script>
-  <script type="module" crossorigin src="/zapco-p14-test/assets/p15lab-CrZB9657.js"></script>
+  <script type="module" crossorigin src="/zapco-p14-test/assets/p24b-DwM2Mu4b.js"></script>
   <link rel="modulepreload" crossorigin href="/zapco-p14-test/assets/500-CkHkDwZr.js">
   <link rel="stylesheet" crossorigin href="/zapco-p14-test/assets/500-9LSn-KqO.css">
-  <link rel="stylesheet" crossorigin href="/zapco-p14-test/assets/p15lab-BQUdDWkE.css">
+  <link rel="stylesheet" crossorigin href="/zapco-p14-test/assets/p24b-DvFDTeew.css">
 </head>
 <body>
 <div class="track" id="track"></div>
@@ -118,9 +118,24 @@
     <button data-a="out" aria-label="Zoom out" class="zm"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12"/></svg></button>
     <button data-a="home" class="ov" aria-label="Show all stations" title="Show all stations"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg><span>All stations</span></button>
   </div>
+  <!-- P2: the one way from the map into Act II (never a map gesture) -->
+  <button class="a2-go" id="a2Go" aria-controls="a2" aria-expanded="false"><span class="a2-go-t"><span class="a2-go-k">Continue the journey</span><span class="a2-go-s">Inside the identity</span></span><span class="a2-go-i" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M5 10h10M11 6l4 4-4 4"/></svg></span></button>
   <div class="m-boot" id="mBoot" aria-hidden="true"><span>Loading the map</span><i></i></div>
 </section>
 
+<!-- P2 "Inside the Identity": the first scene. The picture is the exact mark in depth (canvas); every word is real text -->
+<canvas class="a2c" id="a2c" aria-hidden="true" hidden></canvas>
+<section class="a2 p24" id="a2" aria-label="The ZAPCO universe" aria-hidden="true" data-step="0">
+  <div class="a2-bar">
+    <button class="a2-back" id="a2Back"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg><span>Back to the map</span></button>
+    <button class="a2-find" data-a2find><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg><span>Find a station</span></button>
+  </div>
+  <h2 id="a2H" tabindex="-1" class="p24-sr">The ZAPCO universe (P2.4b journey proof)</h2>
+  <button class="a2-card" id="a2Card" hidden><span>Your map, as you left it</span></button>
+  <button class="a2-next" id="a2Next"><span class="p24-prog" aria-hidden="true"><i></i></span><span class="d-only">Scroll to continue</span><span class="m-only">Swipe up to continue</span></button>
+  <div class="p24c" id="a2Contact" aria-hidden="true"><div class="p24c-panel"><i></i><i></i><i></i><b></b></div></div>
+  <p class="p24-tag">P2.4b proof · Blender render, scroll-driven · private demo</p>
+</section>
 <div class="hint" id="hint"></div>
 <div class="steps" id="steps" aria-hidden="true"></div>
 <div class="panel" id="panel" hidden></div><div class="ctr" id="ctr" hidden></div>
