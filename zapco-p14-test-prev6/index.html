@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>P2.4 · ZAPCO · Fifteen stations across Texas (private demo)</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#070f26">
+<link rel="icon" href="data:,">
+<!-- the first screen is the clip's first frame: fetched first, for the device's own orientation (phones get the portrait clip) -->
+<link rel="preload" as="image" href="/zapco-p14-test-prev6/lab/p14/f/d/001.webp" media="(min-aspect-ratio: 9/10)" fetchpriority="high">
+<link rel="preload" as="image" href="/zapco-p14-test-prev6/lab/p14/f/p/001.webp" media="(max-aspect-ratio: 9/10)" fetchpriority="high">
+<script>/* before the app: device class (same rule as main.js), the deep link (?find=1 never flashes the hero), and early taps
+   on the first screen are remembered and run as soon as the app is ready (a real loading state, never a dead button) */
+(function () { var d = document.documentElement, q = location.search;
+  d.classList.add(/[?&]device=mobile/.test(q) || (!/[?&]device=desktop/.test(q) && innerWidth / innerHeight < 0.9) ? 'is-mobile' : 'is-desktop');
+  if (/[?&]find=1/.test(q)) d.classList.add('deep');
+  /* A.1 critique (cold load): the words and the price tag appear with the picture and the brand type, never before them.
+     'pic' once the first frame has painted, 'type' once the fonts are in; both are forced after 1.2 s so nothing waits longer */
+  d.classList.add('pre');
+  document.addEventListener('load', function (e) { if (e.target.closest && e.target.closest('#poster')) d.classList.add('pic'); }, true);
+  document.addEventListener('DOMContentLoaded', function () { var i = document.querySelector('#poster img'); if (i && i.complete && i.naturalWidth) d.classList.add('pic');
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (document.fonts.check('600 16px "Barlow Condensed"')) d.classList.add('type'); }); });
+  setTimeout(function () { d.classList.add('pic', 'type'); }, 1200);
+  window.__intent = null;
+  document.addEventListener('click', function (e) { if (window.__app) return; var b = e.target.closest && e.target.closest('[data-go]'); if (!b) return;
+    window.__intent = b.dataset.go; d.classList.add('booting'); d.dataset.intent = b.dataset.go; }, true);
+})();</script>
+  <script type="module" crossorigin src="/zapco-p14-test-prev6/assets/p24c-B_OlTKxr.js"></script>
+  <link rel="modulepreload" crossorigin href="/zapco-p14-test-prev6/assets/500-CkHkDwZr.js">
+  <link rel="stylesheet" crossorigin href="/zapco-p14-test-prev6/assets/500-9LSn-KqO.css">
+  <link rel="stylesheet" crossorigin href="/zapco-p14-test-prev6/assets/p24c-CLB50Rdo.css">
+</head>
+<body>
+<div class="track" id="track"></div>
+<div class="stage" id="stage">
+  <picture class="poster" id="poster" aria-hidden="true">
+    <source media="(max-aspect-ratio: 9/10)" srcset="/zapco-p14-test-prev6/lab/p14/f/p/001.webp">
+    <img src="/zapco-p14-test-prev6/lab/p14/f/d/001.webp" alt="" decoding="async" fetchpriority="high">
+  </picture>
+  <img id="hi" class="hi" alt="" aria-hidden="true">
+  <svg id="map" class="map" role="img" aria-label="Map of ZAPCO's 15 listed stations across Greater Houston, Orange, Austin and the Hill Country, and San Antonio. The station list next to the map offers the same stations for keyboard and screen readers."></svg>
+</div>
+
+<!-- navigation: one bar for the first screen and the story; the map carries its own header -->
+<header class="nav" id="nav">
+  <a class="nav-logo" href="./" aria-label="ZAPCO, back to the start" id="navLogo"></a>
+  <nav class="nav-links" aria-label="Main">
+    <button class="nl" data-go="stations">Stations</button>
+    <button class="nl" data-go="story">The network</button>
+    <button class="nl nl-find" data-go="find"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg>Find a station</button>
+  </nav>
+  <button class="nm-menu" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Menu"><i></i><i></i></button>
+</header>
+<div class="menu" id="menu" hidden>
+  <button data-go="find">Find a station</button>
+  <button data-go="stations">All 15 stations</button>
+  <button data-go="story">The network</button>
+  <p class="menu-note">Private demo · prices simulated · imagery illustrative</p>
+</div>
+
+<!-- first screen: title in the sky, the station as the subject, actions on the forecourt -->
+<section class="hero" id="hero" aria-labelledby="heroH">
+  <div class="hero-top">
+    <h1 id="heroH"><span>Fifteen stations.</span> <span>Across Texas.</span></h1>
+    <p class="hero-sub">Find your nearest ZAPCO and get directions in a tap.</p>
+  </div>
+  <div class="hero-act">
+    <button class="btn-find" data-go="find"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg><span>Find a station</span><i class="busy" aria-hidden="true"></i></button>
+    <button class="btn-explore" data-go="explore"><span>Explore ZAPCO</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M5 11l5 5 5-5"/></svg></button>
+  </div>
+  <div class="hero-tag" id="heroTag" aria-hidden="true"><i></i><span>Simulated prices</span></div>
+  <p class="hero-legal">Illustrative image of the Houston – Irvington concept, generated, not a photograph. Prices shown are simulated.</p>
+</section>
+
+<!-- the story's guide: what to do, where you are, what is loading (one component from the first screen to the end) -->
+<div class="guide" id="guide" aria-live="polite">
+  <button class="g-hint" id="gHint" data-go="next"><span class="g-ico" aria-hidden="true"></span><span class="g-txt" id="gTxt"><span class="d-only">Scroll to rise above the station</span><span class="m-only">Swipe up to explore ZAPCO</span></span></button>
+  <ol class="g-steps" id="gSteps" aria-label="Story chapters"></ol>
+</div>
+
+<div class="readout" id="readout" aria-hidden="true"></div>
+<footer class="hud bottom">
+  <div class="chapter" id="chapter" hidden><span class="num" id="chNum">01</span><span class="ttl" id="chTtl"></span></div>
+  <div class="legal" id="legal"></div>
+</footer>
+<button class="skip" id="skipBtn">Skip to the map<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4"/></svg></button>
+
+<!-- map mode: Search → Select → Directions. One panel (desktop) / one sheet (phones) holds search, location, list and the station -->
+<section class="finder" id="finder" aria-label="Find a ZAPCO station" aria-hidden="true">
+  <div class="f-top">
+    <button class="f-back" id="exitBtn" aria-label="Back to the story"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg></button>
+  </div>
+  <div class="sheet" id="sheet" data-state="peek" data-view="list">
+    <div class="sh-grab" id="shGrab" aria-hidden="true"><span></span></div>
+    <div class="p-head">
+      <button class="p-back" id="exitBtn2" aria-label="Back to the story"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg></button>
+      <a class="p-logo" id="pLogo" href="./" aria-label="ZAPCO, back to the start"></a>
+      <p class="p-title">Find a station</p>
+    </div>
+    <div class="f-search">
+      <label class="f-field"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg>
+        <input id="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="City, ZIP or station name" aria-label="Search by city, ZIP or station name">
+        <button class="f-clear" id="qClear" aria-label="Clear search" hidden><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 6l8 8M14 6l-8 8"/></svg></button></label>
+      <button class="f-loc" id="locBtn" data-s="idle"><span class="l-ico" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M3 9.2L17 3l-6.2 14-1.7-6.1z"/></svg></span><span class="l-txt" id="locTxt">Use my location</span><span class="l-sub" id="locSub">Nearest stations first</span></button>
+    </div>
+    <div class="sh-note" id="shNote" hidden></div>
+    <div class="v-list" id="vList">
+      <div class="sh-sum" id="shSum" aria-live="polite"></div>
+      <div class="regions" role="tablist" aria-label="Regions" id="regions"></div>
+      <ol class="results" id="results" aria-label="Stations"></ol>
+      <p class="sh-foot"><i class="mk approx" aria-hidden="true"></i>Dashed = approximate position · distances are straight-line · roads: US Census TIGER</p>
+    </div>
+    <article class="v-card" id="card" hidden aria-live="polite"></article>
+  </div>
+  <div class="mctl" role="group" aria-label="Map controls">
+    <button data-a="in" aria-label="Zoom in" class="zm"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10h12"/></svg></button>
+    <button data-a="out" aria-label="Zoom out" class="zm"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12"/></svg></button>
+    <button data-a="home" class="ov" aria-label="Show all stations" title="Show all stations"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 7V3h4M13 3h4v4M17 13v4h-4M7 17H3v-4"/></svg><span>All stations</span></button>
+  </div>
+  <!-- P2: the one way from the map into Act II (never a map gesture) -->
+  <button class="a2-go" id="a2Go" aria-controls="a2" aria-expanded="false"><span class="a2-go-t"><span class="a2-go-k">Continue the journey</span><span class="a2-go-s">Inside the identity</span></span><span class="a2-go-i" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M5 10h10M11 6l4 4-4 4"/></svg></span></button>
+  <div class="m-boot" id="mBoot" aria-hidden="true"><span>Loading the map</span><i></i></div>
+</section>
+
+<!-- P2 "Inside the Identity": the first scene. The picture is the exact mark in depth (canvas); every word is real text -->
+<canvas class="a2c" id="a2c" aria-hidden="true" hidden></canvas>
+<section class="a2 p24" id="a2" aria-label="The ZAPCO universe" aria-hidden="true" data-step="0">
+  <div class="a2-bar">
+    <button class="a2-back" id="a2Back"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4l-6 6 6 6"/></svg><span>Back to the map</span></button>
+    <button class="a2-find" data-a2find><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg><span>Find a station</span></button>
+  </div>
+  <h2 id="a2H" tabindex="-1" class="p24-sr">The ZAPCO journey: our story, on the road, trust and contact</h2>
+  <button class="a2-card" id="a2Card" hidden><span>Your map, as you left it</span></button>
+  <button class="a2-next p24s" id="a2Next" aria-label="Continue"><span class="p24s-m" aria-hidden="true"><i></i></span><span class="p24s-t d-only">Scroll</span><span class="p24s-t m-only">Swipe up</span><span class="p24s-bar" aria-hidden="true"><b></b></span></button>
+  <div class="p24c" id="a2Contact" aria-hidden="true"><div class="p24c-panel" role="region" aria-labelledby="p24cH">
+    <p class="ch-eb">04 · Contact</p>
+    <h3 class="p24c-h" id="p24cH">Talk to ZAPCO.</h3>
+    <p class="p24c-b">Fleet accounts, franchise enquiries or a question about a station.</p>
+    <form class="p24c-f" onsubmit="return false" aria-describedby="p24cNote">
+      <fieldset class="p24c-topics"><legend class="p24-sr">Topic</legend>
+        <label><input type="radio" name="p24t" value="fleet" checked><span>Fleet account</span></label>
+        <label><input type="radio" name="p24t" value="franchise"><span>Franchise</span></label>
+        <label><input type="radio" name="p24t" value="general"><span>General</span></label>
+      </fieldset>
+      <label class="p24c-in"><span>Name</span><input type="text" autocomplete="off" disabled placeholder="Your name"></label>
+      <label class="p24c-in"><span>Email</span><input type="email" autocomplete="off" disabled placeholder="you@company.com"></label>
+      <div class="p24c-act"><button type="button" class="p24c-send" disabled>Send enquiry</button><button type="button" class="p24c-find" data-a2find>Find a station</button></div>
+      <p class="p24c-note" id="p24cNote">Demo form: nothing is sent. Topics from zapcotx.com.</p>
+    </form>
+  </div></div>
+  <p class="p24-tag">P2.5 · Act II · live real-time 3D · private demo</p>
+</section>
+<div class="hint" id="hint"></div>
+<div class="steps" id="steps" aria-hidden="true"></div>
+<div class="panel" id="panel" hidden></div><div class="ctr" id="ctr" hidden></div>
+<div class="cta" id="cta"><button class="btn-find" data-go="find"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4.5 4.5"/></svg><span>Find a station</span></button><button class="btn-explore" id="replayBtn"><span>Watch again</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 10a5.5 5.5 0 1 0 1.6-3.9M4.5 3.5v3h3"/></svg></button></div>
+<noscript><p class="nojs">This prototype needs JavaScript.</p></noscript>
+</body>
+</html>
